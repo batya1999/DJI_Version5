@@ -1,112 +1,53 @@
-# DJI Mobile SDK for Android V5 Latest Version 5.11.0
+DJI Mobile SDK V5 Enhanced for DJI Mini 3 with Remote Control via WebSocket
+Overview
 
-[中文版](README_CN.md)
+This project extends the DJI Mobile SDK (MSDK) V5 to enable remote control of the DJI Mini 3 drone. The setup consists of an Android app that acts as a bridge to pass commands from a WebSocket server to the drone's remote controller (RC). It allows seamless integration for remote operations over a local server.
+Key Features
 
-## What is DJI Mobile SDK V5?
+    Remote Control Support: Commands are sent from the server to the drone via the Android app.
+    WebSocket Communication: Enables local server-based control for enhanced flexibility.
+    Enhanced Compatibility: Built specifically for DJI Mini 3 using MSDK V5 (version 5.11.0).
 
-DJI Mobile SDK V5 has a series of APIs to control the software and hardware interfaces of an aircraft. We provide an open source production sample and a tutorial for developers to develop a more competitive drone solution on mobile device. This improves the experience and efficiency of MSDK App development.
+How It Works
 
-Supported Product:
-* [H30 Series](https://enterprise.dji.com/cn/zenmuse-h30-series)
-* [DJI Mini3 Pro](https://www.dji.com/cn/mini-3-pro?site=brandsite&from=landing_page)
-* [DJI Mini3](https://www.dji.com/cn/mini-3?site=brandsite&from=landing_page)
-* [Mavic 3 Enterprise Series](https://www.dji.com/cn/mavic-3-enterprise)
-* [M30 Series](https://www.dji.com/matrice-30?site=brandsite&from=nav)
-* [M300 RTK](https://www.dji.com/matrice-300?site=brandsite&from=nav)
-* [Matrice 350 RTK](https://enterprise.dji.com/cn/matrice-350-rtk)
+    Android App: Functions as a communication bridge between the WebSocket server and the DJI Mini 3 RC.
+    WebSocket Server: Handles incoming control commands (e.g., movement directions) and passes them to the app.
+    Drone Control: The app uses DJI MSDK V5 APIs to relay commands to the drone's RC.
 
-## Project Directory Introduction
+Supported Commands
 
-```
-├── Docs
-│   ├── API-Diff
-│   │   ├── 5.0.0_5.1.0_android_diff.html
-│   │   ├── 5.0.0_beta2_5.0.0_beta3_android_diff.html
-│   │   ├── 5.0.0_beta3_5.0.0_android_diff.html
-│   │   ├── 5.1.0_5.2.0_android_diff.html
-│   │   ├── 5.2.0_5.3.0_android_diff.html
-│   │   ├── 5.4.0_5.5.0_android_diff.html
-│   │   ├── 5.5.0_5.6.0_android_diff.html
-│   │   ├── 5.6.0_5.7.0_android_diff.html
-│   │   ├── 5.7.0_5.8.0_android_diff.html
-│   │   ├── 5.8.0_5.9.0_android_diff.html
-│   │   └── 5.9.0_5.10.0_android_diff.html
-│   └── Android_API
-├── LICENSE.txt
-├── README.md
-├── README_CN.md
-└── SampleCode-V5
-    ├── android-sdk-v5-as
-    ├── android-sdk-v5-sample
-    └── android-sdk-v5-uxsdk
-```
+    moveDrone(roll, throttle, yaw, pitch)- gets float values between 0-1
 
-### API Difference
-- [5.9.0_5.10.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.9.0_5.10.0_android_diff.html)
-- [5.8.0_5.9.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.8.0_5.9.0_android_diff.html)
-- [5.7.0_5.8.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.7.0_5.8.0_android_diff.html)
-- [5.6.0_5.7.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.6.0_5.7.0_android_diff.html)
-- [5.5.0_5.6.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.5.0_5.6.0_android_diff.html)
-- [5.4.0_5.5.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.4.0_5.5.0_android_diff.html)
-- [5.2.0_5.3.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.2.0_5.3.0_android_diff.html)
-- [5.1.0_5.2.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.1.0_5.2.0_android_diff.html)
-- [5.0.0_5.1.0_android_diff.html](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.0.0_5.1.0_android_diff.html)
-- [5.0.0_beta3_5.0.0_android_diff](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.0.0_beta3_5.0.0_android_diff.html)
-- [5.0.0_beta2_5.0.0_beta3_android_diff](https://dji-sdk.github.io/Mobile-SDK-Android-V5/Docs/API-Diff/5.0.0_beta2_5.0.0_beta3_android_diff.html)
+Setup Guide
+Prerequisites
 
-### Software License
+    DJI Mini 3 drone.
+    Android device with DJI MSDK V5-compatible app.
+    Local WebSocket server.
 
-The DJI Android SDK is dynamically linked with unmodified libraries of <a href=http://ffmpeg.org>FFmpeg</a> licensed under the <a href=https://www.gnu.org/licenses/lgpl-2.1.html.en>LGPLv2.1</a>. The source code of these FFmpeg libraries, the compilation instructions, and the LGPL v2.1 license are provided in [Github](https://github.com/dji-sdk/FFmpeg). The DJI Sample Code V5 in this repo is offered under MIT License.
+Integration Steps
 
+    Clone this repository.
+    Set up the WebSocket server to handle drone control commands.
+    Deploy the Android app on a compatible device.
+    Connect the Android device and server to the same local network.
+    Use the WebSocket server to send commands, and the app will relay them to the drone.
 
-### Sample Explanation
+Dependencies
 
-Sample can be divided into three parts:
+    DJI Mobile SDK V5: Provides APIs for drone control.
+        Add the following dependencies to your build.gradle file:
 
-- Scenographic Example: Provides scenographic sample support of aircraft.
-- Sample Module: Offer an Airplane Sample App.
+        implementation 'com.dji:dji-sdk-v5-aircraft:5.11.0'
+        compileOnly 'com.dji:dji-sdk-v5-aircraft-provided:5.11.0'
+        runtimeOnly 'com.dji:dji-sdk-v5-networkImp:5.11.0'
 
-For detailed configuration, please refer to [settings.gradle](SampleCode-V5/android-sdk-v5-as/settings.gradle).
+License
 
-Scenographic Example：
+This project integrates the DJI Mobile SDK, which is subject to LGPL v2.1. The sample code provided in this repository is released under the MIT License.
+Support
 
-- uxsdk: Scenographic Example. Currently only aircraft are supported.
+For further assistance, refer to:
 
-Sample module:
-
-- sample：Compile aircraft sample App, which depends on uxsdk.
-
-## Integration
-
-For further detail on how to integrate the DJI Android SDK into your Android Studio project, please check the tutorial:
-- [Notice of Run MSDK](https://developer.dji.com/doc/mobile-sdk-tutorial/en/quick-start/user-project-caution.html)
-
-## AAR Explanation
-
-> **Notice:** sdkVersion = 5.11.0
-
-| SDK package | Explanation | How to use|
-| :---------------: | :-----------------:  | :---------------: |
-|     dji-sdk-v5-aircraft      | Aircraft main package, which provides support for MSDK to control the aircraft. | implementation 'com.dji:dji-sdk-v5-aircraft:{sdkVersion}' |
-| dji-sdk-v5-aircraft-provided | Aircraft compilation package, which provides interfaces related to the aircraft package. | compileOnly 'com.dji:dji-sdk-v5-aircraft-provided:{sdkVersion}' |
-| dji-sdk-v5-networkImp | Network library package, which provides network connection ability for MSDK. Without this dependency, all network functions of MSDK will not work, but the interfaces of hardware control can be used normally. | runtimeOnly 'com.dji:dji-sdk-v5-networkImp:{sdkVersion}' |
-
-- If only the aircraft product is in need to support, please use:
-
-  ```groovy
-  implementation 'com.dji:dji-sdk-v5-aircraft:{sdkVersion}'
-  compileOnly 'com.dji:dji-sdk-v5-aircraft-provided:{sdkVersion}'
-  ```
-  
-- If the MSDK have to use network(required by default), please use:
-  ```groovy
-  runtimeOnly 'com.dji:dji-sdk-v5-networkImp:{sdkVersion}'
-  ```
-
-
-
-## Support
-
-You can get support from DJI with the following method:
-
-- Post questions in DJI Developer Forums: [**DEVELOPER SUPPORT**](https://djisdksupport.zendesk.com/hc/en-us/community/topics)
+    DJI Developer Forum
+    MSDK Documentation
