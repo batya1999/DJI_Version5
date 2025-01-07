@@ -334,7 +334,7 @@ class LiveFragment : DJIFragment() {
     }
 
     private fun stopLive() {
-        liveStreamVM.stopStream(null)
+//        liveStreamVM.stopStream(null)
     }
 
     private fun showSetLiveStreamRtmpConfigDialog() {
