@@ -14,6 +14,12 @@
  *   - ESP32 BLE Arduino library (usually bundled with Arduino-ESP32).
  *   - Adafruit MCP4728 library.
  *   - A board that truly supports BLE with the official library. 
+
+
+ need to add condition that if analogRead is not 0 -> then listen only to the analogRead, 
+ otherwise - listen to the bluetooth device (as long as values remain 0)
+ after this - add analogWrite to the RC - consistently sending the sticks command (just prioritize
+ who we want to listen to)
  ***********************************************************************/
 
 #include <Arduino.h>
