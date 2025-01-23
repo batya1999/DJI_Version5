@@ -5,9 +5,9 @@ from bleak import BleakScanner, BleakClient
 from typing import Dict, List, Optional
 
 # Bluetooth-related constants
-DEVICE_NAME = "XIAO_S3_MCP4728_RPYT"  # The advertised BLE name
-SERVICE_UUID = "12345678-1234-1234-1234-123456789abc"
-CHAR_UUID = "87654321-4321-4321-4321-cba987654321"
+DEVICE_NAME = "DJI_REMOTE_TRPY"  # The advertised BLE name
+SERVICE_UUID = "1fbcdfb1-8e73-4296-9057-a6ee3133902a"
+CHAR_UUID = "d97e4ec1-d3c4-4952-a421-884719fe35f7"
 
 # Joystick handling code
 try:
